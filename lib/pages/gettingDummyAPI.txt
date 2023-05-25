@@ -1,0 +1,17 @@
+void getData() async {
+    Uri url = Uri.parse("https://jsonplaceholder.typicode.com/todos/1");
+    Response response = await get(url);
+    // this Response object is given to us in the http packages, the thing we got back is json which is basically a string of data that looks like a javascript object(JSON => JavaScript Object Notation) or a map in dart
+    Map data = jsonDecode(response
+        .body); // this body property is the actual json string that we got from api
+    // this is to decode the thing into something we can use instead of a string which we cannot get any data from, since it is much easier if we can use the string like a map
+    //since we converted it into a map, we can then use it like any original map to get data with keys entered into square brackets
+    print(data);
+    print(data["title"]);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }

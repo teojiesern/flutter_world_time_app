@@ -1,0 +1,21 @@
+void getData() async {
+    //this is to tell that this method contains asynchronous code which runs at the same time
+    String name = await Future.delayed(Duration(seconds: 3), () {
+      // wait for this to finish then only carry on
+      return "Teo Jie Sern";
+    });
+
+    int age = await Future.delayed(Duration(seconds: 2), () {
+      return 20;
+    });
+
+    print("$name : $age");
+  }
+
+  @override
+  void initState() { // initState automatically runs everytime the class is called but only runs once
+    super.initState();
+    getData();
+    print("working...");
+  }
+  
